@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: student/2024-01-13_1657_create_table.sql
+      relativeToChangelogFile: true

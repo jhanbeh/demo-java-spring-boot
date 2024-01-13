@@ -1,0 +1,47 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.7'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id "com.diffplug.eclipse.apt" version "3.26.0" 
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+compileJava {
+    options.compilerArgs += [
+        '-Amapstruct.suppressGeneratorTimestamp=true',
+        '-Amapstruct.suppressGeneratorVersionInfoComment=true',
+        '-Amapstruct.verbose=true'
+    ]
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.liquibase:liquibase-core'
+	implementation 'org.mapstruct:mapstruct-jdk8:1.5.5.Final'
+	implementation 'com.microsoft.sqlserver:mssql-jdbc:9.4.0.jre8'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('bootBuildImage') {
+	builder = 'paketobuildpacks/builder-jammy-base:latest'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+compileJava.dependsOn processResources
