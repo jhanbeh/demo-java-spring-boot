@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "fec73ca1-0fde-47c0-a142-f22229910774",
+		"name": "Students",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32312658"
+	},
+	"item": [
+		{
+			"name": "Retrieve List of Students Mock",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"name\": \"Ali\",\n    \"age\": 25,\n    \"gender\": \"Male\"\n  },\n  {\n    \"name\": \"Siti\",\n    \"age\": 22,\n    \"gender\": \"Female\"\n  }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/v1/test/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"v1",
+						"test",
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Students",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"name\": \"Ali\",\n    \"age\": 25,\n    \"gender\": \"Male\"\n  },\n  {\n    \"name\": \"Siti\",\n    \"age\": 22,\n    \"gender\": \"Female\"\n  }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/v1/test/student-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"v1",
+						"test",
+						"student-all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Students Pageable",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/v1/test/student-page?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"v1",
+						"test",
+						"student-page"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "sort",
+							"value": "age",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve External Api Info",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/v1/test/external-api",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"v1",
+						"test",
+						"external-api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Student Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"username\": \"S121\",\n    \"name\": \"Ali\",\n    \"age\": 25,\n    \"gender\": \"Male\"\n  },\n  {\n    \"username\": \"R122\",\n    \"name\": \"Siti\",\n    \"age\": 22,\n    \"gender\": \"Female\"\n  }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/v1/test/student-registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"v1",
+						"test",
+						"student-registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"S121\",\n    \"name\": \"Ali\",\n    \"age\": 17,\n    \"gender\": \"Male\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/public/v1/test/student-update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"public",
+						"v1",
+						"test",
+						"student-update"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

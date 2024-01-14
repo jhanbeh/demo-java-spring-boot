@@ -2,3 +2,9 @@ databaseChangeLog:
   - include:
       file: student/2024-01-13_1657_create_table.sql
       relativeToChangelogFile: true
+  - include:
+      file: student/2024-01-13_1700_insert_data.sql
+      relativeToChangelogFile: true
+  - include:
+      file: student/2024-01-14_0839_create_table.sql
+      relativeToChangelogFile: true

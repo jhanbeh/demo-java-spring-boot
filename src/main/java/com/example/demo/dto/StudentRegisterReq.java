@@ -1,4 +1,4 @@
- package com.example.demo.dto;
+package com.example.demo.dto;
 
 import java.math.BigDecimal;
 
@@ -11,7 +11,6 @@ public class StudentRegisterReq {
   private BigDecimal age;
 
   private String gender;
-
   
   public String getUsername() {
     return username;

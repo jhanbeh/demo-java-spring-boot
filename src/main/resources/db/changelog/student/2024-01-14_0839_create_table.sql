@@ -1,0 +1,15 @@
+--liquibase formatted sql
+
+--changeset jhan:mssql.2024-01-14_0839_create_table
+
+CREATE TABLE MOVIE
+(
+   ID VARCHAR (36),
+   TITLE VARCHAR (255),
+   GENRE VARCHAR (255),
+   DIRECTOR VARCHAR (255),
+   RELEASEYEAR NUMERIC,
+   RATING NUMERIC,
+   ISPOPULAR BIT,
+   PRIMARY KEY (ID)
+);

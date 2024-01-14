@@ -1,5 +1,7 @@
 package com.example.demo.dto;
 
+import java.math.BigDecimal;
+
 public class MovieDto {
 
   private String id;
@@ -10,9 +12,9 @@ public class MovieDto {
 
   private String director;
 
-  private int releaseYear;
+  private BigDecimal releaseYear;
 
-  private int rating;
+  private BigDecimal rating;
 
   private boolean isPopular;
 
@@ -48,19 +50,19 @@ public class MovieDto {
     this.director = director;
   }
 
-  public int getReleaseYear() {
+  public BigDecimal getReleaseYear() {
     return releaseYear;
   }
 
-  public void setReleaseYear(int releaseYear) {
+  public void setReleaseYear(BigDecimal releaseYear) {
     this.releaseYear = releaseYear;
   }
 
-  public int getRating() {
+  public BigDecimal getRating() {
     return rating;
   }
 
-  public void setRating(int rating) {
+  public void setRating(BigDecimal rating) {
     this.rating = rating;
   }
 
@@ -72,6 +74,10 @@ public class MovieDto {
     this.isPopular = isPopular;
   }
 
-
+  @Override
+  public String toString() {
+    return "MovieDto [id=" + id + ", title=" + title + ", genre=" + genre + ", director=" + director
+        + ", releaseYear=" + releaseYear + ", rating=" + rating + ", isPopular=" + isPopular + "]";
+  }
 
 }

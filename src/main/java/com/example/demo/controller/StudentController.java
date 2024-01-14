@@ -25,11 +25,10 @@ public class StudentController {
   private static final Logger LOG = LoggerFactory.getLogger(StudentController.class);
 
   private final StudentService studentService;
-  
+
   private final MovieService movieService;
 
-  public StudentController(StudentService studentService,
-      MovieService movieService) {
+  public StudentController(StudentService studentService, MovieService movieService) {
     this.studentService = studentService;
     this.movieService = movieService;
   }
@@ -66,8 +65,8 @@ public class StudentController {
   public ResponseEntity<Page<StudentUpdateRes>> getAllStudentsByPagination(Pageable pageable) {
     return ResponseEntity.ok(studentService.executeAllViaPageable(pageable));
   }
-  
-  // Try get list of data from external 3rd party
+
+  // Try get list of data from external 3rd party + store into db
   @GetMapping("/external-api")
   public ResponseEntity<List<MovieDto>> getAllMovie() {
     return ResponseEntity.ok(movieService.execute());

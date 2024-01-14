@@ -25,10 +25,10 @@ public class StudentService {
 
   private static final Logger LOG = LoggerFactory.getLogger(StudentService.class);
 
-  private final StudentRepository studentRegistrationRepository;
+  private final StudentRepository studentRepository;
 
-  public StudentService(StudentRepository studentRegistrationRepository) {
-    this.studentRegistrationRepository = studentRegistrationRepository;
+  public StudentService(StudentRepository studentRepository) {
+    this.studentRepository = studentRepository;
   }
 
   public List<StudentRegisterRes> executeMockData(List<StudentRegisterReq> req) {
@@ -66,7 +66,7 @@ public class StudentService {
         BeanUtils.copyProperties(rq, std);
         std.setId(UUID.randomUUID().toString());
         StudentRegisterRes rs = new StudentRegisterRes();
-        Student etRes = studentRegistrationRepository.save(std);
+        Student etRes = studentRepository.save(std);
         BeanUtils.copyProperties(etRes, rs);
         rs.setRegisterSuccess(etRes != null ? true : false);
         res.add(rs);
@@ -85,7 +85,7 @@ public class StudentService {
     Optional<Student> result = validateUsernameForUpdate(req.getUsername());
 
     BeanUtils.copyProperties(req, result.get());
-    Student etRes = studentRegistrationRepository.save(result.get());
+    Student etRes = studentRepository.save(result.get());
 
     StudentUpdateRes stdRes = new StudentUpdateRes();
     BeanUtils.copyProperties(etRes, stdRes);
@@ -98,7 +98,7 @@ public class StudentService {
   public List<StudentUpdateRes> executeAll() {
 
     List<StudentUpdateRes> rs = new ArrayList<>();
-    List<Student> res = studentRegistrationRepository.findAll();
+    List<Student> res = studentRepository.findAll();
 
     for (Student std : res) {
       StudentUpdateRes sur = new StudentUpdateRes();
@@ -113,7 +113,7 @@ public class StudentService {
   @Transactional
   public Page<StudentUpdateRes> executeAllViaPageable(Pageable pg) {
 
-    Page<Student> res = studentRegistrationRepository.findAll(pg);
+    Page<Student> res = studentRepository.findAll(pg);
 
     List<StudentUpdateRes> content =
         res.getContent().stream().map(this::mapToStudentUpdateRes).collect(Collectors.toList());
@@ -129,7 +129,7 @@ public class StudentService {
   // validate username from db, throw exception is username exist
   private Optional<Student> validateUsernameForInsert(String username) {
     Optional<Student> et =
-        Optional.ofNullable(studentRegistrationRepository.findByUsername(username));
+        Optional.ofNullable(studentRepository.findByUsername(username));
 
     if (et.isPresent()) {
       throw new StudentExistException(et.get().getUsername());
@@ -141,7 +141,7 @@ public class StudentService {
   // validate username from db, return entity if exist or else throw exceptions
   private Optional<Student> validateUsernameForUpdate(String username) {
     Optional<Student> et =
-        Optional.ofNullable(studentRegistrationRepository.findByUsername(username));
+        Optional.ofNullable(studentRepository.findByUsername(username));
 
     if (et.isPresent()) {
       return et;
